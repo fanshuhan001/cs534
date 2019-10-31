@@ -40,6 +40,26 @@ def load_data(filename, label=True):
     
     return x, y 
 
+def predict(w, features, label):
+    pass
+
+def online_perceptron(features, label, iters=15):
+    w = np.zeros(len(features[0]))
+    
+    for iter in range(iters):
+        for i in range(len(features)):
+            w_t = w.reshape(w.shape[0], 1)
+            y_hat = np.sign(np.matmul(w_t, features[i]))
+            if y_hat * label[i] <= 0:
+                w += label[i] * features[i] 
+            predict(w, features, label)
+    return w
+
+
+
+
+
+
 if __name__ == "__main__":
-    load_data("pa2_train.csv")
-    #print(features)
+    features, label = load_data("E:\CS534\HW\im2\pa2_train.csv")
+    print(features, "\n------------------------------\n\n", label)
