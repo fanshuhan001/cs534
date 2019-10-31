@@ -18,7 +18,7 @@ def load_data(filename, label=True):
         x: features
         y: label
     '''
-    data = pd.read_csv(filename)
+    data = pd.read_csv(filename, header=None)
     if label:
         y = data[[0]]        
         #change label from 3/5 to 1/-1
@@ -41,5 +41,5 @@ def load_data(filename, label=True):
     return x, y 
 
 if __name__ == "__main__":
-    features, label = load_data("predict_test.csv");
-    print(features)
+    load_data("pa2_train.csv")
+    #print(features)
